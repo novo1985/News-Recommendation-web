@@ -8,7 +8,7 @@ class NewsPanel extends React.Component {
   // store news card, need variable
   constructor() {
     super();
-    this.state = { news: null };
+    this.state = { news: null, pageNum: 1, loadedAll: false };
   }
 
   handleScroll() {
@@ -31,7 +31,19 @@ class NewsPanel extends React.Component {
 
   /* communicate with backend to obtain news info*/
   loadMoreNews() {
-    const news_url = 'http://' + window.location.hostname + ':3000' + '/news';
+    if (this.state.loadedAll === true) {
+      return;
+    }
+
+    const news_url =
+      'http://' +
+      window.location.hostname +
+      ':3000' +
+      '/news/userId/' +
+      Auth.getEmail() +
+      '/pageNum/' +
+      this.state.pageNum;
+
     const request = new Request(news_url, {
       method: 'GET',
       headers: {
@@ -55,7 +67,8 @@ class NewsPanel extends React.Component {
         }
 
         this.setState({
-          news: this.state.news ? this.state.news.concat(news) : news
+          news: this.state.news ? this.state.news.concat(news) : news,
+          pageNum: this.state.pageNum + 1
         });
       });
   }

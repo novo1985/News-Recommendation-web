@@ -15,6 +15,32 @@ function add(a, b, callback) {
   });
 }
 
+// Get news summaries for a user
+function getNewsSummariesForUser(user_id, page_num, callback) {
+  client.request('getNewsSummariesForUser', [user_id, page_num], function(
+    err,
+    response
+  ) {
+    if (err) throw err;
+    console.log(response);
+    callback(response.result);
+  });
+}
+
+// Log a news click event for a user
+function logNewsClickForUser(user_id, news_id) {
+  client.request('logNewsClickForUser', [user_id, news_id], function(
+    err,
+    response
+  ) {
+    console.log('rpc_client/logNewsClickForUser');
+    if (err) throw err;
+    console.log(response);
+  });
+}
+
 module.exports = {
-  add: add
+  add: add,
+  getNewsSummariesForUser: getNewsSummariesForUser,
+  logNewsClickForUser: logNewsClickForUser
 };

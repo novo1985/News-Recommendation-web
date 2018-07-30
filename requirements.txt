@@ -6,5 +6,9 @@ redis
 lxml
 sklearn
 numpy
+newspaper3k
 scipy
 python-dateutil
+tensorflow
+pandas
+watchdog
