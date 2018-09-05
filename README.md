@@ -12,10 +12,10 @@
 
 
 2. Web app building  
-    * Creates a frontend build pipeline by "create-react-app" package
+    * Creates a frontend build pipeline by "create-react-app" package  
     utilizing [React tool](https://reactjs.org/blog/2016/07/22/create-apps-with-no-configuration.html) to create single-page React application, using materializecss to design front-end framework
 
-    * Authentication: **SHA1** with **SALT**
+    * Authentication: **SHA1** with **SALT**  
     For each user, we generate a random a salt and add it to user’s password. Server-side generated password.All user information are stored in MongoDB  
 
         >Signup: f(password, salt) = hash(password + salt)  
