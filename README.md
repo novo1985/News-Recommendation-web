@@ -1,5 +1,4 @@
 ### News Recommendation application
-
 1. Project schematic diagram  
-    [Imgur](https://i.imgur.com/F0wSGse.png)
+    ![image](https://i.imgur.com/F0wSGse.png)
 
