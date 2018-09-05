@@ -18,15 +18,15 @@
     * Authentication: SHA1 with SALT
     For each user, we generate a random a salt and add it to user’s password. Server-side generated password.All user information are stored in MongoDB  
 
-        >Signup: f(password, salt) = hash(password + salt)
+        >Signup: f(password, salt) = hash(password + salt)  
         >Login: hash([provided password] + [stored salt]) == [stored hash]
 
     * Generate a Node server by "express-generator" package  
-    Front-end react app will get information from Node server and display the news from Node server. Node server get news from Backend Server through RPC request
+    Front-end react app will get information from Node server and display the news from Node server. Node server get news from Backend Server through RPC requests
 
-        >![Data flow](https://imgur.com/Lzu6pgs)  
+        >![Data flow](https://i.imgur.com/Lzu6pgs.jpg)  
 
-    
+    * 
 
 
 
