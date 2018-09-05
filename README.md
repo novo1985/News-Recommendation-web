@@ -23,7 +23,6 @@
 
     * Generate a Node server by ["express-generator"](https://expressjs.com/en/starter/generator.html) package  
     Front-end react app will get information from Node server and display the news from Node server. Node server get news from Backend Server through RPC requests
-    ======
     
     ![Data flow](https://i.imgur.com/Lzu6pgs.jpg)  
 
@@ -63,8 +62,7 @@
         * news topic modeling -**tensorflow**(classify)
         * news recommendation 
             * user click log processing
-            * Creating preference model for new user -store in database
-            * 
+            * Creating or updating preference model for new user -store in database
 
 
 
