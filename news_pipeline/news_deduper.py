@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # import common package in parent directory
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 
-import mongodb_client  # pylint: disable=E0401, C0413
+import mongodb_client
 import news_topic_modeling_service_client
 
 from cloudAMQP_client import CloudAMQPClient
@@ -16,7 +16,7 @@ from cloudAMQP_client import CloudAMQPClient
 # mongodb news table name
 NEWS_TABLE_NAME = "news"
 
-SAME_NEWS_SIMILARITY_THRESHOLD = 0.8
+SAME_NEWS_SIMILARITY_THRESHOLD = 0.9
 
 SLEEP_TIME_IN_SECONDS = 3
 
@@ -37,13 +37,12 @@ def handle_message(msg):
     # get all recent news based on publishedAt, using published_at to dedup
     published_at = parser.parse(task['publishedAt'])
     published_at_day_begin = datetime.datetime(published_at.year, published_at.month, published_at.day, 0, 0, 0, 0)
-    published_at_day_end = published_at_day_begin + datetime.timedelta(days = 1)
+    published_at_day_end = published_at_day_begin + datetime.timedelta(days=1)
 
     db = mongodb_client.get_db()
     same_day_news_list = list(db[NEWS_TABLE_NAME].find(
         {'publishedAt': {'$gte': published_at_day_begin,
                          '$lt': published_at_day_end}}))
-
     if same_day_news_list is not None and len(same_day_news_list) > 0:
         documents = [news['text'] for news in same_day_news_list]
         documents.insert(0, text)
@@ -63,11 +62,12 @@ def handle_message(msg):
     # convert string type to mongodb request data type
     task['publishedAt'] = parser.parse(task['publishedAt'])
 
+
     # Classify news
-    title = task['title']
-    if title is not None:
-        topic = news_topic_modeling_service_client.classify(title)
-        task['class'] = topic
+    # title = task['title']
+    #if title is not None:
+    #    topic = news_topic_modeling_service_client.classify(title)
+    #    task['class'] = topic
 
     db[NEWS_TABLE_NAME].replace_one({'digest': task['digest']}, task, upsert=True)
     print("new news be added into mongodb")

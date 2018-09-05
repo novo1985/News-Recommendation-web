@@ -33,7 +33,7 @@ class SignUpPage extends React.Component {
       return;
     }
 
-    // TODO: post registration data
+    // post registration data
     const url = 'http://' + window.location.hostname + ':3000' + '/auth/signup';
     const request = new Request(url, {
       method: 'Post',

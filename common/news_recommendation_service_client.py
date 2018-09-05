@@ -1,8 +1,8 @@
 import jsonrpclib
 
-URL = "http://localhost:5050/"
+# URL = "http://localhost:5050/"
 
-client = jsonrpclib.ServerProxy(url=URL)
+client = jsonrpclib.Server("http://localhost:5050/")
 
 def getPreferenceForUser(userId):
     preference = client.getPreferenceForUser(userId)

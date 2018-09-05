@@ -11,6 +11,6 @@ client.getNewsSummariesForUser('test_user', 1, function(response) {
 });
 
 // invoke "logNewsClickForUser"
-client.logNewsClickForUser('test_user', 'test_news');
+// client.logNewsClickForUser('test_user', 'test_news');
 
 // to test, we must start backend server

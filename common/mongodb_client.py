@@ -6,5 +6,5 @@ DB_NAME = "tap-news"
 
 client = MongoClient(MONGO_DB_HOST, MONGO_DB_PORT)
 
-def get_db(db_name=DB_NAME):
-    return client[db_name]
+def get_db(db=DB_NAME):
+    return client[db]

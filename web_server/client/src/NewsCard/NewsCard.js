@@ -1,36 +1,36 @@
 /* display UI */
 import './NewsCard.css';
 import React from 'react';
-import Auth from '../Auth/Auth';
+// import Auth from '../Auth/Auth';
 
 class NewsCard extends React.Component {
   redirectToUrl(url, event) {
     event.preventDefault();
-    this.sendClickLog();
+    // this.sendClickLog();
     window.open(url, '_blank');
   }
 
   // two para: userId: email, newsId: news['digest']
-  sendClickLog() {
-    const url =
-      'http://' +
-      window.location.hostname +
-      ':3000' +
-      '/news/userId/' +
-      Auth.getEmail() +
-      '/newsId/' +
-      this.props.news.digest;
+  // sendClickLog() {
+  //   const url =
+  //     'http://' +
+  //     window.location.hostname +
+  //     ':3000' +
+  //     '/news/userId/' +
+  //     Auth.getEmail() +
+  //     '/newsId/' +
+  //     this.props.news.digest;
 
-    const request = new Request(encodeURI(url), {
-      method: 'POST',
-      headers: {
-        Authorization: 'bearer ' + Auth.getToken()
-      },
-      cache: false
-    });
+  //   const request = new Request(encodeURI(url), {
+  //     method: 'POST',
+  //     headers: {
+  //       Authorization: 'bearer ' + Auth.getToken()
+  //     },
+  //     cache: false
+  //   });
 
-    fetch(request);
-  }
+  //   fetch(request);
+  // }
 
   render() {
     return (
@@ -76,3 +76,7 @@ class NewsCard extends React.Component {
 }
 
 export default NewsCard;
+
+
+
+

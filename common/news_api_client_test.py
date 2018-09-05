@@ -7,6 +7,7 @@ def test_basic():
     print (news)
     assert len(news) > 0
     news = client.getNewsFromSource(sources=['bbc-news'], sortBy='top')
+    print (news)
     assert len(news) > 0
     print ('test_basic passed!')
 

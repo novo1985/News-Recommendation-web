@@ -20,11 +20,11 @@ class CloudAMQPClient:
 
     # get a message: basic_get() function, get one message at a time
     def getMessage(self):
-      method_frame, header_frame, body = self.channel.basic_get(self.queue_name)
+      method_frame, header_frame, body = self.channel.basic_get(self.queue_name, no_ack = False)
       if method_frame:
         print("[x] Received message from %s : %s" % (self.queue_name, body))
         self.channel.basic_ack(method_frame.delivery_tag)
-        return json.loads(body)
+        return json.loads(body.decode('utf-8'))
       else:
         print("No message returned")
         return None

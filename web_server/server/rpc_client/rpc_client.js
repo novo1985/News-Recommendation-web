@@ -1,6 +1,6 @@
 var jayson = require('jayson');
 
-// create a client
+// Create a client connected to backend server
 var client = jayson.client.http({
   hostname: 'localhost',
   port: 4040
@@ -23,7 +23,7 @@ function getNewsSummariesForUser(user_id, page_num, callback) {
   ) {
     if (err) throw err;
     console.log(response);
-    callback(response.result);
+    callback(response);
   });
 }
 

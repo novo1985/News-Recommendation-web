@@ -6,8 +6,8 @@ from newspaper import Article
 # import common package in parent directory
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 # sys.path.append(os.path.join(os.path.dirname(__file__), 'scrapers'))
-
 #import cnn_news_scraper
+
 from cloudAMQP_client import CloudAMQPClient
 
 # TODO: use your own queue.
